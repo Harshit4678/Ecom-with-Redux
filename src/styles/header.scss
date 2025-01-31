@@ -148,3 +148,16 @@ header {
     }
   }
 }
+
+.user-actions {
+  display: flex;
+  align-items: center;
+
+  button {
+    color: white;
+    background-color: unset;
+    border: unset;
+    margin: 5px 10px;
+    cursor: pointer;
+  }
+}

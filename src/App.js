@@ -1,65 +1,52 @@
 import "./App.css";
-// import ListItem from "./components/ListItem";
 import Products from "./components/Listitems/Products.js";
 import Header from "./components/Listitems/Layout/header.js";
 import Subheader from "./components/Listitems/Layout/Subheader.js";
-import { useState } from "react";
+import { Routes, Route, Navigate } from "react-router-dom";
+import AuthIndex from "./components/Listitems/AuTH/auth.js";
+import { useEffect } from "react";
+import { checkIsLoggedIn } from "./actions/authActions.js";
+import { useDispatch, useSelector } from "react-redux";
 
-function App() {
-  const [cartItems, setCartItems] = useState([]);
-  const [eventQueue, setEventQueue] = useState({
-    id: "",
-    type: "",
-  });
+const NotFound = () => {
+  return (
+    <div>
+      <h1>Not Found !</h1>
+    </div>
+  );
+};
 
-  const handleAddItem = (item) => {
-    let items = [...cartItems];
-    let index = items.findIndex((i) => i.id === item.id);
-    if (index > -1) {
-      items[index] = item;
-    } else {
-      items.push(item);
-    }
-    setCartItems([...items]);
-    // setCartItems(cartItems + 1);
-  };
+const App = () => {
+  const dispatch = useDispatch();
+  const authState = useSelector((state) => state.auth);
 
-  const handleRemoveItem = (item) => {
-    let items = [...cartItems];
-    let index = items.findIndex((i) => i.id === item.id);
-    if (items[index].quantity === 0) {
-      items.splice(index, 1);
-    } else {
-      items[index] = item;
-    }
-    setCartItems([...items]);
-    // setCartItems(cartItems - 1);
-  };
-
-  // type === -1, decrease
-  // type ===1 , increase
-  const handleEventQueue = (id, type) => {
-    setEventQueue({
-      id,
-      type,
-    });
-  };
+  useEffect(() => {
+    dispatch(checkIsLoggedIn(() => {}));
+  }, []);
 
   return (
     <div>
-      <Header
-        count1={cartItems.length}
-        items={cartItems}
-        onHandleEvent={handleEventQueue}
-      ></Header>
-      <Subheader></Subheader>
-      <Products
-        onAddItem={handleAddItem}
-        onRemoveItem={handleRemoveItem}
-        eventState={eventQueue}
-      ></Products>
+      <Header />
+      <Subheader />
+      <Routes>
+        {/* protected routes  */}
+        {!authState.idToken ? (
+          <Route path="/login" element={<AuthIndex type="login" />} />
+        ) : (
+          <Route path="/login" element={<Navigate to="/" replace={true} />} />
+        )}
+        {!authState.idToken ? (
+          <Route path="/signup" element={<AuthIndex type="signup" />} />
+        ) : (
+          <Route path="/signup" element={<Navigate to="/" replace={true} />} />
+        )}
+
+        <Route path="/404" element={<NotFound />} />
+        <Route path="/:category?" element={<Products />} />
+        <Route path="*" element={<Navigate to="/404" replace />} />
+      </Routes>
     </div>
   );
-}
+};
 
 export default App;

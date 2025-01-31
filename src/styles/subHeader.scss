@@ -1,5 +1,6 @@
 .subheader-container {
   position: sticky;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
   z-index: 1024;
   top: 66px;
   ul {
@@ -18,7 +19,7 @@
         padding: 10px 16px;
         text-decoration: none;
         color: black;
-        font-size: 14px;
+        font-size: 16px;
         transition: background 100ms ease-in-out;
         white-space: nowrap;
 

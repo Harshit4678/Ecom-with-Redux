@@ -1,6 +1,6 @@
 import Modal from "./modal";
 
-const OrderSuccessModal = ({ onClose }) => {
+const OrderSuccessModal = ({ onClose, orderId }) => {
   return (
     <Modal onClose={onClose}>
       <div className="order-container">
@@ -12,7 +12,8 @@ const OrderSuccessModal = ({ onClose }) => {
           ></img>
           <div className="message">
             <h1>Order Successfully Placed ! </h1>
-            <span>OrderID #{Math.random().toString(32).slice(2)}</span>
+            <span>OrderID #{orderId} </span>
+            {/* <span>OrderID #{Math.random().toString(32).slice(2)}</span> */}
           </div>
         </div>
       </div>

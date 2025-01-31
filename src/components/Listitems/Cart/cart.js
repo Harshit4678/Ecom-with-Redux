@@ -2,10 +2,21 @@ import { Fragment, useState } from "react";
 import Modal from "../UI/modal";
 import CartItems from "./cartItems";
 import OrderSuccessModal from "../UI/OrderSuccess";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  addItemHandler,
+  clearCartHandler,
+  placeOrderHandler,
+  removeItemHandler,
+} from "../../../actions/action";
 
-const Cart = ({ count1, items, onHandleEvent }) => {
+const Cart = () => {
   const [showModal, setShowModal] = useState(false);
   const [orderModal, setOrderModal] = useState(false);
+  const items = useSelector((state) => state.Cart.items);
+  const totalAmount = useSelector((state) => state.Cart.totalAmount);
+  const [orderId, setOrderId] = useState("");
+  const dispatch = useDispatch();
 
   const handleModal = () => {
     setShowModal((previousState) => !previousState);
@@ -13,13 +24,38 @@ const Cart = ({ count1, items, onHandleEvent }) => {
 
   const handleOrderModal = () => {
     setShowModal(false);
+    // dispatch(clearCartHandler());
     setOrderModal((previous) => !previous);
+  };
+
+  const orderHandler = () => {
+    // dispatch(clearCartHandler());
+    dispatch(
+      placeOrderHandler((response) => {
+        // console.log(response);
+        if (response.error) {
+          alert(response.data.error || "Some error occured,please try again");
+        } else {
+          setOrderId(response.data.name);
+          setShowModal(false);
+          setOrderModal((previous) => !previous);
+        }
+      })
+    );
+  };
+
+  const dispatchEvent = (type, item) => {
+    if (type === 1) {
+      dispatch(addItemHandler(item));
+    } else if (type === -1) {
+      dispatch(removeItemHandler(item.id));
+    }
   };
 
   return (
     <Fragment>
       <button onClick={handleModal}>
-        <span data-items={count1}>Cart</span>
+        <span data-items={items.length}>Cart</span>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           className="icon icon-tabler icon-tabler-shopping-cart-plus"
@@ -45,14 +81,14 @@ const Cart = ({ count1, items, onHandleEvent }) => {
           <div className="checkout-modal">
             <h2>Checkout Modal</h2>
             <div className="checkout-modal_list">
-              {count1 > 0 ? (
+              {items.length > 0 ? (
                 items.map((item) => {
                   return (
                     <CartItems
                       data={item}
                       key={item.id}
-                      onEmitIncreaseItem={(id) => onHandleEvent(id, 1)}
-                      onEmitDecreaseItem={(id) => onHandleEvent(id, -1)}
+                      onEmitIncreaseItem={(item) => dispatchEvent(1, item)}
+                      onEmitDecreaseItem={(item) => dispatchEvent(-1, item)}
                     />
                   );
                 })
@@ -62,26 +98,24 @@ const Cart = ({ count1, items, onHandleEvent }) => {
                 </div>
               )}
             </div>
-            {count1 > 0 && (
+            {items.length > 0 && (
               <div className="checkout-modal_footer">
                 <div className="totalAmount">
                   <h4>Total Amount: </h4>
                   <h4>
-                    {items.reduce((previous, current) => {
-                      return (
-                        previous + current.discountedPrice * current.quantity
-                      );
-                    }, 0)}
+                    {totalAmount}
                     <span style={{ marginLeft: "5px" }}>INR</span>
                   </h4>
                 </div>
-                <button onClick={handleOrderModal}>Order Now</button>
+                <button onClick={orderHandler}>Order Now</button>
               </div>
             )}
           </div>
         </Modal>
       )}
-      {orderModal && <OrderSuccessModal onClose={handleOrderModal} />}
+      {orderModal && (
+        <OrderSuccessModal orderId={orderId} onClose={handleOrderModal} />
+      )}
     </Fragment>
   );
 };
