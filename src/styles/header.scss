@@ -159,5 +159,15 @@ header {
     border: unset;
     margin: 5px 10px;
     cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease; /* Add transition for smooth hover effect */
+  }
+
+  button:hover {
+    background-color: #2c2c2a; /* Change background color on hover */
+    color: #007bff; /* Change text color on hover */
+  }
+  .profile-icon {
+    color: azure;
+    // background-color: antiquewhite;
   }
 }

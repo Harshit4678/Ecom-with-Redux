@@ -1,5 +1,6 @@
-import { AccountCircleSharp, LogoutSharp } from "@mui/icons-material";
-import { useNavigate } from "react-router-dom";
+import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
+import LogoutOutlinedIcon from "@mui/icons-material/LogoutOutlined";
+import { useNavigate, Link } from "react-router-dom";
 import Cart from "../Cart/cart";
 import SearchBox from "../UI/Search";
 import { useDispatch, useSelector } from "react-redux";
@@ -44,14 +45,16 @@ const Header = () => {
       {authState && authState.idToken ? (
         <div className="user-actions">
           <button title="User Profile" className="material-icons">
-            {<AccountCircleSharp />}
+            <Link to="/profile">
+              {<AccountCircleOutlinedIcon className="profile-icon" />}{" "}
+            </Link>
           </button>
           <button
             onClick={logoutHandler}
             title="Logout"
             className="material-icons"
           >
-            {<LogoutSharp />}
+            {<LogoutOutlinedIcon />}
           </button>
         </div>
       ) : (

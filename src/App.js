@@ -7,6 +7,7 @@ import AuthIndex from "./components/Listitems/AuTH/auth.js";
 import { useEffect } from "react";
 import { checkIsLoggedIn } from "./actions/authActions.js";
 import { useDispatch, useSelector } from "react-redux";
+import Profile from "./components/Listitems/Layout/profile.js";
 
 const NotFound = () => {
   return (
@@ -42,6 +43,14 @@ const App = () => {
         )}
 
         <Route path="/404" element={<NotFound />} />
+        {authState.idToken ? (
+          <Route path="/profile" element={<Profile />} />
+        ) : (
+          <Route
+            path="/profile"
+            element={<Navigate to="/login" replace={true} />}
+          />
+        )}
         <Route path="/:category?" element={<Products />} />
         <Route path="*" element={<Navigate to="/404" replace />} />
       </Routes>

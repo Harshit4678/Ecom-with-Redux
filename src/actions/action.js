@@ -1,5 +1,4 @@
 import axios from "axios";
-import Cart from "../components/Listitems/Cart/cart";
 
 export const addItemHandler = (item) => {
   return (dispatch) => {
@@ -46,7 +45,9 @@ export const placeOrderHandler = (callback) => {
       const response = await axios.post(
         `https://ecom-1ef8b-default-rtdb.firebaseio.com/orders/${auth.localId}.json?auth=${auth.idToken}`,
         {
-          ...Cart,
+          items: Cart.items,
+          totalAmount: Cart.totalAmount,
+          date: new Date().toISOString(),
         }
       );
       dispatch({
@@ -55,6 +56,71 @@ export const placeOrderHandler = (callback) => {
       return callback({
         error: false,
         data: response.data,
+      });
+    } catch (error) {
+      return callback({
+        error: true,
+        ...error.response,
+      });
+    }
+  };
+};
+
+export const fetchUserProfile = (callback) => {
+  return async (dispatch, getState) => {
+    const { auth } = getState();
+    if (!auth.idToken) {
+      return callback({
+        error: true,
+        data: {
+          error: "Please Login to view profile",
+        },
+      });
+    }
+    try {
+      const response = await axios.get(
+        `https://ecom-1ef8b-default-rtdb.firebaseio.com/users/${auth.localId}.json?auth=${auth.idToken}`
+      );
+      dispatch({
+        type: "FETCH_USER_PROFILE",
+        payload: response.data,
+      });
+      return callback({
+        error: false,
+        data: response.data,
+      });
+    } catch (error) {
+      return callback({
+        error: true,
+        ...error.response,
+      });
+    }
+  };
+};
+
+export const updateUserProfile = (details, callback) => {
+  return async (dispatch, getState) => {
+    const { auth } = getState();
+    if (!auth.idToken) {
+      return callback({
+        error: true,
+        data: {
+          error: "Please Login to update profile",
+        },
+      });
+    }
+    try {
+      await axios.put(
+        `https://ecom-1ef8b-default-rtdb.firebaseio.com/users/${auth.localId}.json?auth=${auth.idToken}`,
+        details
+      );
+      dispatch({
+        type: "UPDATE_USER_PROFILE",
+        payload: details,
+      });
+      return callback({
+        error: false,
+        data: details,
       });
     } catch (error) {
       return callback({

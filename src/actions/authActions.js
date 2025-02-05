@@ -66,8 +66,8 @@ export const checkIsLoggedIn = (callback) => {
   return async (dispatch) => {
     const token = localStorage.getItem("token");
     const localId = localStorage.getItem("localId"); // Retrieve localId
-    console.log("Token:", token); // Debugging step
-    console.log("LocalId:", localId); // Debugging step
+    // console.log("Token:", token); // Debugging step
+    // console.log("LocalId:", localId); // Debugging step
     if (!token || !localId) {
       return callback({ error: true, response: "No token or localId found" });
     }
@@ -78,7 +78,7 @@ export const checkIsLoggedIn = (callback) => {
           idToken: token,
         }
       );
-      console.log("Response:", response); // Debugging step
+      // console.log("Response:", response); // Debugging step
       dispatch({
         type: "LOGIN",
         payload: {

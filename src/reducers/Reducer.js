@@ -1,5 +1,6 @@
 import { combineReducers } from "redux";
 import authReducer from "./authReducer";
+import profileReducer from "./profileReducer";
 
 const mainReducer = (
   state = {
@@ -67,4 +68,5 @@ const mainReducer = (
 export default combineReducers({
   Cart: mainReducer,
   auth: authReducer,
+  profile: profileReducer,
 });

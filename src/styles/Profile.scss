@@ -1,0 +1,111 @@
+.profile-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.profile-title {
+  text-align: center;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  font-size: 2em;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.profile-form {
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 20px;
+  width: 100%;
+  max-width: 400px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.profile-form .form-group {
+  margin-bottom: 10px; /* Reduced bottom margin */
+}
+
+.profile-form .form-group label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.profile-form .form-group input,
+.profile-form button,
+.details-value {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 10px; /* Reduced bottom margin */
+  box-sizing: border-box; /* Include padding and border in the element's total width and height */
+}
+
+.profile-form button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.profile-form button:hover {
+  background-color: #0056b3;
+}
+
+.profile-details {
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 20px;
+  width: 100%;
+  max-width: 400px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.profile-details h2 {
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.details-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px; /* Reduced bottom margin */
+}
+
+.details-label {
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  font-weight: bold;
+  color: #555;
+  width: 30%; /* Fixed width for labels */
+}
+
+.details-value {
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  width: 80%; /* Remaining width for values */
+  padding: 10px; /* Ensure consistent padding */
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+  color: #333;
+  margin-bottom: 10px; /* Ensure consistent margin */
+}
+
+.edit-button {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+.edit-button:hover {
+  background-color: #218838;
+}
