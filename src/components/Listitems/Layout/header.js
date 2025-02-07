@@ -18,7 +18,7 @@ const Header = () => {
     <header>
       <div className="nav-brand">
         <a href="/">
-          <span>InstaCart</span>
+          <span className="brandname">InstaCart</span>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             className="icon icon-tabler icon-tabler-shopping-cart"
@@ -54,7 +54,7 @@ const Header = () => {
             title="Logout"
             className="material-icons"
           >
-            {<LogoutOutlinedIcon />}
+            {<LogoutOutlinedIcon className="profile-icon" />}
           </button>
         </div>
       ) : (

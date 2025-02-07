@@ -66,6 +66,7 @@
         }
         input {
           padding: 8px 14px;
+          font-size: 14px;
         }
       }
 
@@ -78,5 +79,122 @@
         }
       }
     }
+  }
+}
+
+/* Responsive Styles */
+
+/* For tablets and smaller screens (up to 1024px) */
+@media screen and (max-width: 1024px) {
+  .auth-container {
+    margin-top: 0; /* Remove margin-top to center the content on smaller screens */
+    padding: 20px;
+  }
+
+  .auth-Box {
+    padding: 20px;
+    min-width: 300px;
+  }
+
+  .tab-selector {
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 15px;
+  }
+
+  .tab-selector a {
+    margin-bottom: 10px;
+    padding: 10px 15px;
+    width: 100%; /* Full width for the links */
+  }
+
+  .button-wrap button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 15px;
+  }
+
+  .login-btn {
+    width: 100%; /* Full width on small screens */
+    margin-right: 0; /* Remove right margin */
+  }
+}
+
+/* For mobile screens (up to 768px) */
+@media screen and (max-width: 768px) {
+  .auth-container {
+    padding: 15px;
+  }
+
+  .auth-Box {
+    padding: 18px;
+    min-width: 260px;
+  }
+
+  .tab-selector {
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 10px;
+  }
+
+  .tab-selector a {
+    margin-bottom: 8px;
+    padding: 10px 15px;
+    width: 100%; /* Ensure links take full width */
+  }
+
+  .button-wrap button {
+    width: 100%;
+    padding: 10px;
+  }
+
+  .login-btn {
+    width: 100%; /* Full width on smaller screens */
+    margin-right: 0;
+  }
+
+  .input-wrap input {
+    padding: 10px 12px;
+    font-size: 14px; /* Ensure text input is readable on small screens */
+  }
+}
+
+/* For very small screens (phones in portrait mode, below 480px) */
+@media screen and (max-width: 480px) {
+  .auth-container {
+    padding: 10px;
+  }
+
+  .auth-Box {
+    padding: 16px;
+    min-width: 240px;
+  }
+
+  .tab-selector {
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 8px;
+  }
+
+  .tab-selector a {
+    margin-bottom: 6px;
+    padding: 10px;
+    width: 100%; /* Full width for mobile links */
+  }
+
+  .button-wrap button {
+    width: 100%;
+    padding: 8px;
+    font-size: 14px;
+  }
+
+  .login-btn {
+    width: 100%; /* Full width */
+    margin-right: 0; /* No margin on mobile */
+  }
+
+  .input-wrap input {
+    padding: 8px 12px;
+    font-size: 14px; /* Ensure input fields are legible */
   }
 }

@@ -3,6 +3,7 @@
   font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
   z-index: 1024;
   top: 66px;
+  width: 100%; /* Ensures it spans full width */
   ul {
     padding: 0;
     margin: 0;
@@ -13,30 +14,67 @@
     box-shadow: 0 15px 10px -15px #1111112b;
     padding: 0 32px;
     overflow-x: auto;
-    li {
-      a {
-        display: inline-block;
-        padding: 10px 16px;
-        text-decoration: none;
-        color: black;
-        font-size: 16px;
-        transition: background 100ms ease-in-out;
-        white-space: nowrap;
+    white-space: nowrap; /* Ensures items stay on one line for large screens */
+    flex-wrap: nowrap; /* Prevents wrapping */
+  }
 
-        &.active,
-        &:hover {
-          background-color: rgb(255, 93, 30);
-          color: white;
-        }
+  li {
+    a {
+      display: inline-block;
+      padding: 10px 16px;
+      text-decoration: none;
+      color: black;
+      font-size: 16px;
+      transition: background 100ms ease-in-out;
+      white-space: nowrap;
+
+      &.active,
+      &:hover {
+        background-color: rgb(255, 93, 30);
+        color: white;
       }
     }
   }
 }
 
+/* Media query for small screens */
+@media screen and (max-width: 1024px) {
+  .subheader-container {
+    ul {
+      padding: 0 16px; /* Adjust padding on smaller screens */
+      overflow-x: scroll; /* Allow horizontal scrolling on smaller screens */
+    }
+  }
+}
+
+/* Media query for very small screens (mobile) */
 @media screen and (max-width: 768px) {
   .subheader-container {
     ul {
-      padding: 0 16px;
+      padding: 0 12px; /* Further reduce padding on smaller screens */
+      justify-content: space-between; /* Space items evenly */
+    }
+    li {
+      a {
+        font-size: 14px; /* Smaller font size for mobile */
+        padding: 8px 12px; /* Adjust padding to fit smaller screens */
+      }
+    }
+  }
+}
+
+/* Media query for very narrow screens (small mobile or portrait mode) */
+@media screen and (max-width: 480px) {
+  .subheader-container {
+    ul {
+      padding: 0 8px; /* Minimized padding for extremely small screens */
+      justify-content: center; /* Center items */
+    }
+    li {
+      a {
+        font-size: 12px; /* Further reduce font size */
+        padding: 6px 10px; /* Further adjust padding */
+      }
     }
   }
 }

@@ -64,9 +64,24 @@ const mainReducer = (
       return state;
   }
 };
+const orderReducer = (state = { history: [] }, action) => {
+  switch (action.type) {
+    case "FETCH_ORDER_HISTORY":
+      console.log("Updating order history in state:", action.payload); // Add this line
+      return {
+        ...state,
+        history: action.payload,
+      };
+    default:
+      return state;
+  }
+};
+
+// export default orderReducer;
 
 export default combineReducers({
   Cart: mainReducer,
   auth: authReducer,
   profile: profileReducer,
+  orders: orderReducer,
 });

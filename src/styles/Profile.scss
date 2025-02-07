@@ -3,14 +3,15 @@
   flex-direction: column;
   align-items: center;
   padding: 20px;
+  width: 100%;
 }
 
 .profile-title {
   text-align: center;
   font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
-  font-size: 2em;
   color: #333;
   margin-bottom: 20px;
+  font-size: 14; /* Add font size for larger screens */
 }
 
 .profile-form {
@@ -25,7 +26,7 @@
 }
 
 .profile-form .form-group {
-  margin-bottom: 10px; /* Reduced bottom margin */
+  margin-bottom: 10px;
 }
 
 .profile-form .form-group label {
@@ -34,14 +35,13 @@
 }
 
 .profile-form .form-group input,
-.profile-form button,
-.details-value {
+.profile-form button {
   width: 100%;
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
-  margin-bottom: 10px; /* Reduced bottom margin */
-  box-sizing: border-box; /* Include padding and border in the element's total width and height */
+  margin-bottom: 10px;
+  box-sizing: border-box;
 }
 
 .profile-form button {
@@ -56,12 +56,14 @@
 }
 
 .profile-details {
+  margin-left: auto;
+  margin-right: auto;
   border: 1px solid #ccc;
   border-radius: 10px;
   padding: 20px;
-  width: 100%;
-  max-width: 400px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  max-width: 800px; // Set a consistent max-width
+  width: 90%;
 }
 
 .profile-details h2 {
@@ -69,34 +71,54 @@
   margin-bottom: 15px;
 }
 
+.profile-content {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+}
+
 .details-row {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  margin-bottom: 10px; /* Reduced bottom margin */
+  width: 100%;
+  max-width: 1200px;
+}
+.details-item {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background-color: #f9f9f9;
+  margin: 0 10px;
+  flex: 1;
 }
 
 .details-label {
   font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
   font-weight: bold;
+  margin-bottom: 5px;
+
   color: #555;
-  width: 30%; /* Fixed width for labels */
+  // width: 30%; /* Fixed width for labels */
 }
 
 .details-value {
   font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
-  width: 80%; /* Remaining width for values */
-  padding: 10px; /* Ensure consistent padding */
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  background-color: #f9f9f9;
+  font-size: 16px;
   color: #333;
-  margin-bottom: 10px; /* Ensure consistent margin */
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
 }
 
 .edit-button {
   display: block;
-  width: 100%;
+  width: 150px;
   padding: 10px;
   background-color: #28a745;
   color: white;
@@ -108,4 +130,92 @@
 
 .edit-button:hover {
   background-color: #218838;
+}
+
+/* Responsive adjustments for medium screens (tablets and smaller desktops) */
+@media screen and (max-width: 1024px) {
+  .profile-title {
+    font-size: 1.8em;
+  }
+
+  .profile-form,
+  .profile-details {
+    width: 80%;
+    margin-left: 10%;
+    margin-right: 10%;
+  }
+
+  .details-row {
+    flex-direction: column; /* Stack details vertically on smaller screens */
+  }
+
+  .details-label,
+  .details-value {
+    width: 100%; /* Make labels and values stack vertically */
+    margin-bottom: 8px;
+  }
+
+  .button-container {
+    flex-direction: column;
+  }
+
+  .edit-button {
+    width: 100%; /* Make button full width on smaller screens */
+  }
+}
+
+/* Responsive adjustments for smaller screens (phones, below 768px) */
+@media screen and (max-width: 768px) {
+  .profile-title {
+    font-size: 1.5em; /* Further reduce font size for phones */
+  }
+
+  .profile-form,
+  .profile-details {
+    width: 90%; /* Use more width on mobile */
+    margin-left: 5%;
+    margin-right: 5%;
+  }
+
+  .details-row {
+    flex-direction: column; /* Stack details vertically */
+  }
+
+  .details-label,
+  .details-value {
+    width: 100%; /* Ensure labels and values take full width */
+  }
+
+  .button-container {
+    margin-top: 15px;
+  }
+
+  .edit-button {
+    width: 100%; /* Full-width button for smaller screens */
+    padding: 12px; /* Larger padding for buttons */
+  }
+}
+
+/* Responsive adjustments for very small screens (portrait mobile, below 480px) */
+@media screen and (max-width: 480px) {
+  .profile-title {
+    font-size: 1.2em; /* Further reduce font size */
+  }
+
+  .profile-form,
+  .profile-details {
+    width: 95%; /* Maximize available width */
+    margin-left: 2.5%;
+    margin-right: 2.5%;
+  }
+
+  .details-label,
+  .details-value {
+    width: 100%; /* Full width for both labels and values */
+  }
+
+  .edit-button {
+    width: 100%; /* Ensure button takes full width */
+    padding: 14px; /* Larger padding for buttons on small screens */
+  }
 }

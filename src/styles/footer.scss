@@ -1,0 +1,118 @@
+/* Apply Cambria font to the entire footer content */
+footer {
+  background-color: #222; /* Dark background for contrast */
+  color: white;
+  font-family: "Cambria", serif; /* Use Cambria font */
+  padding: 40px 0;
+  text-align: center;
+  box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1); /* Add subtle shadow to separate footer from main content */
+  margin-top: 40px;
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+footer p {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.6;
+  letter-spacing: 0.5px;
+}
+
+.footer-links {
+  margin-top: 20px;
+}
+
+.footer-link {
+  color: #ddd; /* Light gray for links */
+  text-decoration: none;
+  margin: 0 15px;
+  font-size: 14px;
+  transition: color 0.3s ease;
+}
+
+.footer-link:hover {
+  color: #ff6347; /* Highlight color on hover */
+}
+
+.footer-socials {
+  margin-top: 20px;
+}
+
+.social-icon {
+  color: #ddd;
+  text-decoration: none;
+  font-size: 18px;
+  margin: 0 15px;
+  transition: color 0.3s ease;
+}
+
+.social-icon:hover {
+  color: #ff6347; /* Highlight color for social icons */
+}
+
+.footer-logo {
+  width: 120px; /* Set a fixed size for the logo */
+  margin-bottom: 20px;
+}
+
+.newsletter-signup {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #333; /* Dark background for the signup area */
+  border-radius: 5px;
+}
+
+.newsletter-signup input {
+  padding: 10px;
+  margin-right: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+  width: 250px; /* Set a fixed width for the input */
+}
+
+.newsletter-signup button {
+  padding: 10px 20px;
+  background-color: #ff6347;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
+}
+
+.newsletter-signup button:hover {
+  background-color: #ff4500; /* Darken the button on hover */
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 768px) {
+  .footer-content {
+    padding: 0 10px;
+  }
+
+  .footer-link {
+    display: inline-block;
+    margin: 5px 10px;
+  }
+
+  .social-icon {
+    font-size: 16px;
+  }
+
+  .newsletter-signup input {
+    width: 200px; /* Adjust input width for small screens */
+  }
+
+  .footer-logo {
+    width: 100px; /* Adjust logo size for small screens */
+  }
+}

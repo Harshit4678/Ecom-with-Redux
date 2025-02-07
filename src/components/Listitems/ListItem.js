@@ -31,7 +31,7 @@ const ListItem = ({ data }) => {
     <Fragment>
       <div onClick={handleModal} className="item-card">
         <img
-          className="img-wrap"
+          className="thumbnail"
           src={`${data.thumbnail}`}
           alt="Some title"
         ></img>
@@ -73,7 +73,7 @@ const ListItem = ({ data }) => {
           <div className="item-card__modal">
             <div className="img-wrap">
               <img
-                className="img-fluid"
+                className="thumbnail2"
                 src={`${data.thumbnail}`}
                 alt="Some title"
               ></img>

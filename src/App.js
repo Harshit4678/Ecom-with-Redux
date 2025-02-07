@@ -8,6 +8,7 @@ import { useEffect } from "react";
 import { checkIsLoggedIn } from "./actions/authActions.js";
 import { useDispatch, useSelector } from "react-redux";
 import Profile from "./components/Listitems/Layout/profile.js";
+import Footer from "./components/Listitems/Layout/footer.js";
 
 const NotFound = () => {
   return (
@@ -54,6 +55,7 @@ const App = () => {
         <Route path="/:category?" element={<Products />} />
         <Route path="*" element={<Navigate to="/404" replace />} />
       </Routes>
+      <Footer />
     </div>
   );
 };

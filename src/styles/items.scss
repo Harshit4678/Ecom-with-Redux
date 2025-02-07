@@ -1,12 +1,31 @@
+$color: #000;
+$black: #000;
+$alpha: 1;
+$primary: #f74200;
+$white: #fff;
+$card-width: calc(20% - 32px); // Adjusted to fit 5 cards in a row
+
+@media (max-width: 1200px) {
+  $card-width: calc(25% - 32px);
+}
+
+@media (max-width: 768px) {
+  $card-width: calc(33.33% - 32px);
+}
+
+@media (max-width: 480px) {
+  $card-width: calc(50% - 16px);
+}
+
 .product-list {
-  padding: 16px 32px;
+  padding: 16px;
   width: 100%;
   min-height: 100vh;
 
   &--wrapper {
     display: flex;
-    padding-left: 40px;
     flex-wrap: wrap;
+    justify-content: center;
   }
 }
 
@@ -14,12 +33,32 @@
   cursor: pointer;
   display: flex;
   flex-direction: column;
-  height: inherit;
+  height: auto;
   padding: 0;
-  width: 16.66%;
+  width: $card-width;
+  max-width: 100%;
+  box-sizing: border-box;
   margin: 16px;
-  border: 1px solid rgba($color: $black, $alpha: 0.1);
+  border: 1px solid rgba($black, 0.1);
   border-radius: 4px;
+
+  @media (max-width: 1200px) {
+    width: calc(25% - 32px);
+  }
+
+  @media (max-width: 768px) {
+    width: calc(33.33% - 32px);
+  }
+
+  @media (max-width: 480px) {
+    width: calc(50% - 16px);
+  }
+
+  .item-thumbnail {
+    width: 100%;
+    height: 200px; // Set a fixed height for the images
+    object-fit: contain; // Ensures the entire image is visible within the area
+  }
 
   &__information {
     font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
@@ -29,7 +68,7 @@
     .title {
       text-overflow: ellipsis;
       font-size: 14px;
-      color: rgba($color: $black, $alpha: 0.8);
+      color: rgba($black, 0.8);
       white-space: nowrap;
       overflow-x: hidden;
 
@@ -41,38 +80,72 @@
 
   &__modal {
     display: flex;
+    flex-direction: column;
+    @media (min-width: 768px) {
+      flex-direction: row;
+    }
+    .thumbnail {
+      width: 100%;
+      height: auto;
+      max-height: 300px;
+      object-fit: contain;
+
+      @media (min-width: 768px) {
+        width: 150px;
+        height: 150px;
+      }
+    }
     .img-wrap {
-      flex-basis: 40%;
-      min-width: 40%;
-      .img-fluid {
-        max-width: 100%;
-        height: auto;
-        display: block;
+      flex-basis: 100%;
+      @media (min-width: 768px) {
+        flex-basis: 40%;
+        min-width: 40%;
       }
     }
-    .meta {
+    .img-fluid {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+  }
+  .meta {
+    font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+    padding: 16px 0;
+    @media (min-width: 768px) {
+      padding-left: 16px;
+    }
+    h3 {
+      font-size: large;
+      margin-top: 12px;
+      margin-bottom: 4px;
+      opacity: 0.8;
+    }
+    p {
+      font-weight: 300;
+      color: grey;
       font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
-      flex-grow: 60%;
-      h3 {
-        font-size: large;
-        margin-top: 12px;
-        margin-bottom: 4px;
-        opacity: 0.8;
-      }
-      p {
-        font-weight: 300;
-        color: grey;
-        font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
-        font-size: 16px;
-      }
+      font-size: 16px;
     }
+  }
 
-    button.cart-add {
-      border-radius: 0px;
+  button.cart-add {
+    border-radius: 0px;
+    @media (max-width: 480px) {
+      font-size: 12px;
+      padding: 6px 12px;
     }
+  }
 
-    .cart-addon {
-      justify-content: space-between;
+  .cart-addon {
+    justify-content: space-between;
+    @media (max-width: 480px) {
+      button {
+        font-size: 12px;
+        padding: 6px 10px;
+      }
+      span.counter {
+        padding: 0 12px;
+      }
     }
   }
 }
@@ -107,6 +180,15 @@ button.cart-add {
   &__modal {
     margin-top: 8px;
   }
+
+  @media (max-width: 480px) {
+    font-size: 12px;
+    padding: 6px 12px;
+  }
+}
+button.cart-add:hover {
+  background-color: rgba(247, 66, 0, 0.788);
+  color: white;
 }
 
 .cart-addon {
@@ -115,7 +197,6 @@ button.cart-add {
   &__modal {
     margin-top: 8px;
   }
-  // margin-top: 8px;
   justify-content: space-between;
   align-items: center;
   button {
@@ -130,5 +211,58 @@ button.cart-add {
   span.counter {
     font-weight: lighter;
     padding: 0 16px;
+  }
+
+  @media (max-width: 480px) {
+    button {
+      font-size: 12px;
+      padding: 6px 10px;
+    }
+    span.counter {
+      padding: 0 12px;
+    }
+  }
+}
+
+.thumbnail {
+  object-fit: contain; /* Ensures the image fits within the area without distortion */
+  width: 100%;
+  height: 200px; /* Set a fixed height for the images */
+}
+
+.thumbnail2 {
+  width: 100%;
+  max-width: 240px;
+  object-fit: contain; /* Ensures the image fits within the area without distortion */
+
+  @media (max-width: 768px) {
+    max-width: 200px;
+  }
+
+  @media (max-width: 480px) {
+    max-width: 160px;
+  }
+}
+
+@media (max-width: 480px) {
+  .product-list {
+    padding: 8px;
+  }
+
+  .item-card {
+    margin: 8px;
+  }
+
+  .item-card__information {
+    padding: 4px 8px;
+  }
+
+  .pricing {
+    span {
+      font-size: 12px;
+    }
+    small {
+      font-size: 10px;
+    }
   }
 }

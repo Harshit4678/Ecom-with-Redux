@@ -9,7 +9,7 @@ const Modal = ({ onClose, children }) => {
         <Fragment>
           <Backdrop onClose={onClose} />
           <div className="modal">
-            <button type="close" onClick={onClose}>
+            <button className="closebutton" type="close" onClick={onClose}>
               X
             </button>
             <div className="content">{children}</div>

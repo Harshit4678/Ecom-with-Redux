@@ -1,13 +1,13 @@
 $header-background-color: rgba(28, 34, 36, 0.8);
-// $header-background-color: rgba(28, 34, 36, 0.75);
-// $header-background-color: rgba(98, 101, 102, 0.99);
 
 header {
   margin: 0;
-  padding: 0 0px;
+  padding: 0;
   background-color: $header-background-color;
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
   box-shadow: 0 15px 10px -15px #1111112b;
   position: sticky;
   z-index: 1024;
@@ -20,14 +20,18 @@ header {
   button {
     display: flex;
     align-items: center;
-    padding: 12px 32px;
+    padding: 12px 16px;
     text-decoration: none;
     color: white;
-    font-size: 28px;
+    font-size: 20px;
+    transition: background-color 0.3s ease;
 
     svg {
       margin-left: 8px;
-      font-size: 30px;
+      font-size: 24px;
+    }
+    .brandname {
+      font-size: xx-large;
     }
   }
 
@@ -54,7 +58,7 @@ header {
         &[data-items]::after {
           position: relative;
           content: attr(data-items);
-          font-size: 12px;
+          font-size: 10px;
           background-color: red;
           padding: 2px 4px;
           border-radius: 50%;
@@ -67,35 +71,35 @@ header {
 }
 
 .searchBox-container {
-  align-self: center;
   flex-grow: 1;
+  padding: 8px;
+  max-width: 600px;
+  width: 100%;
 
   form {
     position: relative;
     display: flex;
-    max-width: 100%;
-    margin: 0 80px;
-    justify-content: center;
+    width: 100%;
 
     input {
       flex-grow: 1;
-      padding: 8px 56px 8px 16px;
+      padding: 8px 40px 8px 16px;
       border: transparent;
       border-radius: 2px;
       width: 100%;
-      font-size: 15px;
+      font-size: 14px;
       color: rgba(128, 128, 128, 0.897);
-      outline: rgba($color: $header-background-color, $alpha: 0.5);
-      max-width: 500px;
+      outline: none;
     }
 
     button[type="submit"] {
       background-color: rgb(233, 97, 37);
-      position: relative;
-      right: 36px;
-      padding-right: 8px !important;
-      padding-left: 8px !important;
-      border: unset;
+      position: absolute;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      padding: 0 12px;
+      border: none;
       border-top-right-radius: 2px;
       border-bottom-right-radius: 2px;
       cursor: pointer;
@@ -103,49 +107,6 @@ header {
   }
   form + svg {
     display: none;
-  }
-}
-
-// Media Queries
-@media screen and (max-width: 768px) {
-  .nav-brand,
-  .cart-container {
-    a,
-    button {
-      font-size: 22px;
-      padding: 14px 16px;
-    }
-  }
-
-  .cart-container {
-    a,
-    button {
-      font-size: 16px;
-    }
-  }
-
-  .searchBox-container {
-    form {
-      margin: 0 0px;
-    }
-  }
-}
-
-@media screen and (max-width: 450px) {
-  .cart-container {
-    a span:first-child,
-    button span:first-child {
-      display: none;
-    }
-  }
-  .searchBox-container {
-    form {
-      display: none;
-    }
-    form + svg {
-      margin-left: auto;
-      display: block;
-    }
   }
 }
 
@@ -157,17 +118,70 @@ header {
     color: white;
     background-color: unset;
     border: unset;
-    margin: 5px 10px;
+    margin: 5px;
+    padding: 8px;
     cursor: pointer;
-    transition: background-color 0.3s ease, color 0.3s ease; /* Add transition for smooth hover effect */
+    transition: background-color 0.3s ease, color 0.3s ease;
   }
 
   button:hover {
-    background-color: #2c2c2a; /* Change background color on hover */
-    color: #007bff; /* Change text color on hover */
+    background-color: #2c2c2a;
+    color: #007bff;
   }
   .profile-icon {
     color: azure;
-    // background-color: antiquewhite;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .searchBox-container {
+    order: 3;
+    width: 100%;
+    max-width: none;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  header {
+    padding: 8px 0;
+  }
+
+  .nav-brand,
+  .cart-container {
+    a,
+    button {
+      font-size: 18px;
+      padding: 8px 12px;
+    }
+  }
+
+  .user-actions button {
+    padding: 6px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .cart-container {
+    a span:first-child,
+    button span:first-child {
+      display: none;
+    }
+  }
+  .searchBox-container {
+    form {
+      display: none;
+    }
+    form + svg {
+      display: block;
+      margin: 0 auto;
+      font-size: 24px;
+      color: white;
+    }
+  }
+  .user-actions {
+    button {
+      margin: 2px;
+      padding: 6px;
+    }
   }
 }
