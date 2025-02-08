@@ -10,9 +10,7 @@
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -20,4 +18,200 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+/* Responsive behavior for smartphone view */
+@media screen and (max-width: 768px) {
+  body {
+    font-size: 14px;
+  }
+
+  header {
+    padding: 8px 0;
+  }
+
+  .nav-brand,
+  .cart-container {
+    a,
+    button {
+      font-size: 16px;
+      padding: 8px 12px;
+    }
+  }
+
+  .searchBox-container {
+    width: 100%;
+    max-width: none;
+    padding: 8px 12px;
+  }
+
+  .profile-icon {
+    font-size: 16px;
+  }
+
+  .subheader-container {
+    ul {
+      padding: 0 12px;
+      justify-content: space-between;
+    }
+    li {
+      a {
+        font-size: 14px;
+        padding: 8px 12px;
+      }
+    }
+  }
+
+  .checkout-modal {
+    padding: 16px;
+    .checkout-modal_list-item {
+      flex-direction: column;
+      .img-wrap {
+        width: 100%;
+        img {
+          width: 100%;
+          height: auto;
+        }
+      }
+      .information {
+        width: 100%;
+        .pricing {
+          font-size: 14px;
+        }
+        .cart-addon {
+          button {
+            font-size: 14px;
+            padding: 8px;
+          }
+          .counter {
+            font-size: 14px;
+          }
+        }
+      }
+    }
+  }
+
+  .product-list {
+    .product-list--wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 8px;
+    }
+  }
+
+  .auth-container {
+    padding: 16px;
+    form {
+      display: flex;
+      flex-direction: column;
+      input {
+        margin-bottom: 8px;
+        padding: 8px;
+        font-size: 14px;
+      }
+      button {
+        padding: 8px;
+        font-size: 14px;
+      }
+    }
+  }
+}
+
+/* Further adjustments for very small screens (mobile) */
+@media screen and (max-width: 480px) {
+  body {
+    font-size: 12px;
+  }
+
+  header {
+    padding: 6px 0;
+  }
+
+  .nav-brand,
+  .cart-container {
+    a,
+    button {
+      font-size: 14px;
+      padding: 6px 10px;
+    }
+  }
+
+  .searchBox-container {
+    width: 100%;
+    max-width: none;
+    padding: 6px 10px;
+  }
+
+  .profile-icon {
+    font-size: 14px;
+  }
+
+  .subheader-container {
+    ul {
+      padding: 0 8px;
+      justify-content: center;
+    }
+    li {
+      a {
+        font-size: 12px;
+        padding: 6px 10px;
+      }
+    }
+  }
+
+  .checkout-modal {
+    padding: 12px;
+    .checkout-modal_list-item {
+      flex-direction: column;
+      .img-wrap {
+        width: 100%;
+        img {
+          width: 100%;
+          height: auto;
+        }
+      }
+      .information {
+        width: 100%;
+        .pricing {
+          font-size: 12px;
+        }
+        .cart-addon {
+          button {
+            font-size: 12px;
+            padding: 6px;
+          }
+          .counter {
+            font-size: 12px;
+          }
+        }
+      }
+    }
+  }
+
+  .product-list {
+    .product-list--wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 6px;
+    }
+  }
+
+  .auth-container {
+    padding: 12px;
+    form {
+      display: flex;
+      flex-direction: column;
+      input {
+        margin-bottom: 6px;
+        padding: 6px;
+        font-size: 12px;
+      }
+      button {
+        padding: 6px;
+        font-size: 12px;
+      }
+    }
+  }
 }
