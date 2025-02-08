@@ -75,38 +75,51 @@ header {
   padding: 8px;
   max-width: 600px;
   width: 100%;
+  position: relative;
 
   form {
     position: relative;
     display: flex;
     width: 100%;
-
-    input {
-      flex-grow: 1;
-      padding: 8px 40px 8px 16px;
-      border: transparent;
-      border-radius: 2px;
-      width: 100%;
-      font-size: 14px;
-      color: rgba(128, 128, 128, 0.897);
-      outline: none;
-    }
-
-    button[type="submit"] {
-      background-color: rgb(233, 97, 37);
-      position: absolute;
-      right: 0;
-      top: 0;
-      bottom: 0;
-      padding: 0 12px;
-      border: none;
-      border-top-right-radius: 2px;
-      border-bottom-right-radius: 2px;
-      cursor: pointer;
-    }
   }
+
+  input {
+    flex-grow: 1;
+    padding: 8px 40px 8px 16px;
+    border: transparent;
+    border-radius: 2px;
+    width: 100%;
+    font-size: 14px;
+    color: rgba(128, 128, 128, 0.897);
+    outline: none;
+  }
+
+  button[type="submit"] {
+    background-color: rgb(233, 97, 37);
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    padding: 0 12px;
+    border: none;
+    border-top-right-radius: 2px;
+    border-bottom-right-radius: 2px;
+    cursor: pointer;
+  }
+
   form + svg {
     display: none;
+  }
+
+  // On smaller screens, show the search form and adjust its styling
+  @media screen and (max-width: 480px) {
+    form {
+      display: flex; // Ensure the form is shown in flex layout
+      width: 100%; // Make sure it spans the full width
+    }
+    form + svg {
+      display: none; // Hide the icon (since form will be visible)
+    }
   }
 }
 
@@ -167,17 +180,17 @@ header {
       display: none;
     }
   }
+
   .searchBox-container {
     form {
-      display: none;
+      display: flex; // Make sure form is visible on smaller screens
     }
+
     form + svg {
-      display: block;
-      margin: 0 auto;
-      font-size: 24px;
-      color: white;
+      display: none; // Remove the search icon when form is visible
     }
   }
+
   .user-actions {
     button {
       margin: 2px;

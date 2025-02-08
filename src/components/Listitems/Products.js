@@ -67,6 +67,7 @@ const Products = () => {
 
   return (
     <>
+      {loader && <Loader />}
       <div className="product-list">
         <div className="product-list--wrapper">
           {items.map((item) => {
@@ -82,7 +83,6 @@ const Products = () => {
           })}
         </div>
       </div>
-      {loader && <Loader />}
     </>
   );
 };

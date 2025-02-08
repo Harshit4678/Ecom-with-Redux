@@ -1,0 +1,19 @@
+.search-results {
+  padding: 20px;
+}
+
+.searchResult-heading {
+  text-align: center;
+  margin-bottom: 10px; // Reduced from 20px to 10px
+}
+
+.searchlrist-container {
+  height: 100%;
+}
+
+.product-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}

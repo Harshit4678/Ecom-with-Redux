@@ -79,7 +79,7 @@ const Cart = () => {
       {showModal && (
         <Modal onClose={handleModal}>
           <div className="checkout-modal">
-            <h2>Checkout Modal</h2>
+            <h2>My Cart</h2>
             <div className="checkout-modal_list">
               {items.length > 0 ? (
                 items.map((item) => {

@@ -1,6 +1,7 @@
 import { combineReducers } from "redux";
 import authReducer from "./authReducer";
 import profileReducer from "./profileReducer";
+import searchReducer from "./searchReducer";
 
 const mainReducer = (
   state = {
@@ -84,4 +85,5 @@ export default combineReducers({
   auth: authReducer,
   profile: profileReducer,
   orders: orderReducer,
+  search: searchReducer,
 });

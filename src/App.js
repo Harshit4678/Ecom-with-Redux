@@ -9,6 +9,7 @@ import { checkIsLoggedIn } from "./actions/authActions.js";
 import { useDispatch, useSelector } from "react-redux";
 import Profile from "./components/Listitems/Layout/profile.js";
 import Footer from "./components/Listitems/Layout/footer.js";
+import SearchResults from "./components/Listitems/SearchResults.js";
 
 const NotFound = () => {
   return (
@@ -52,6 +53,7 @@ const App = () => {
             element={<Navigate to="/login" replace={true} />}
           />
         )}
+        <Route path="/search" element={<SearchResults />} />
         <Route path="/:category?" element={<Products />} />
         <Route path="*" element={<Navigate to="/404" replace />} />
       </Routes>

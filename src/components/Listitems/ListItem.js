@@ -6,7 +6,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { addItemHandler, removeItemHandler } from "../../actions/action";
 
 const ListItem = ({ data }) => {
-  // const [counter, setCounter] = useState(0);
   const [showModal, setShowModal] = useState(false);
   const item = useSelector((state) =>
     state.Cart.items.find((item) => item.id === data.id)
@@ -33,7 +32,7 @@ const ListItem = ({ data }) => {
         <img
           className="thumbnail"
           src={`${data.thumbnail}`}
-          alt="Some title"
+          alt={data.title}
         ></img>
         <div className="item-card__information">
           <div className="pricing">
@@ -46,13 +45,9 @@ const ListItem = ({ data }) => {
             <h3>{data.title}</h3>
           </div>
         </div>
-        {/* <button onClick={() => UpdateItemTitle(data.id)}>
-          Update the title
-        </button> */}
-        {/* <small className="cart-message">{message}</small> */}
         {!item || item?.quantity < 1 ? (
           <button className={"cart-add"} onClick={increaseCounterByOne}>
-            <span>Add to Card</span>
+            <span>Add to Cart</span>
             <img src={AddToCartIcon} alt="Cart Icon"></img>
           </button>
         ) : (
@@ -75,7 +70,7 @@ const ListItem = ({ data }) => {
               <img
                 className="thumbnail2"
                 src={`${data.thumbnail}`}
-                alt="Some title"
+                alt={data.title}
               ></img>
             </div>
             <div className="meta">
@@ -90,7 +85,7 @@ const ListItem = ({ data }) => {
 
               {!item || item?.quantity < 1 ? (
                 <button className={"cart-add"} onClick={increaseCounterByOne}>
-                  <span>Add to Card</span>
+                  <span>Add to Cart</span>
                   <img src={AddToCartIcon} alt="Cart Icon"></img>
                 </button>
               ) : (
