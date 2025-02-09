@@ -39,16 +39,13 @@ const AuthIndex = () => {
 
   const handleSubmission = (e) => {
     e.preventDefault();
-    console.log(details);
     if (type === "signup") {
       setLoader(true);
       dispatch(
         signupWithEmailAndPassword(details, (data) => {
           if (data.error) {
-            console.log(data.error);
-            alert("Some error occured");
+            alert("Some error occurred");
           } else {
-            console.log("Successfully Signed Up");
             navigate("/");
           }
           setLoader(false);
@@ -59,11 +56,10 @@ const AuthIndex = () => {
       dispatch(
         loginWithEmailAndPassword(details, (data) => {
           if (data.error) {
-            console.log(data.error);
-            // alert("Some error occured");
-            alert(data?.response?.data?.error?.message || "Some error occured");
+            alert(
+              data?.response?.data?.error?.message || "Some error occurred"
+            );
           } else {
-            console.log("Successfully logged in !");
             navigate("/");
           }
           setLoader(false);
@@ -71,8 +67,6 @@ const AuthIndex = () => {
       );
     }
   };
-
-  // console.log("AuthIndex type:", type);
 
   return (
     <Fragment>

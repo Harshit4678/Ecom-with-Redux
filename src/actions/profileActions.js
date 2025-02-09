@@ -3,8 +3,7 @@ import axios from "axios";
 const refreshToken = async (refreshToken) => {
   try {
     const response = await axios.post(
-      `https://securetoken.googleapis.com/v1/token?key=
-AIzaSyCiMrtylmUZVIDn12OkLJhNgd2haE0Ptzk`, // Replace YOUR_API_KEY with your actual API key
+      `https://securetoken.googleapis.com/v1/token?key=AIzaSyCiMrtylmUZVIDn12OkLJhNgd2haE0Ptzk`, // Replace YOUR_API_KEY with your actual API key
       {
         grant_type: "refresh_token",
         refresh_token: refreshToken,

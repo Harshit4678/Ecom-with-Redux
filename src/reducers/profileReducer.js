@@ -2,17 +2,17 @@ const initialState = {
   userProfile: null,
 };
 
-const userReducer = (state = initialState, action) => {
+const profileReducer = (state = initialState, action) => {
   switch (action.type) {
     case "FETCH_USER_PROFILE":
       return {
         ...state,
-        profile: action.payload,
+        userProfile: action.payload,
       };
     case "UPDATE_USER_PROFILE":
       return {
         ...state,
-        profile: action.payload,
+        userProfile: action.payload,
       };
     // other cases
     default:
@@ -20,4 +20,4 @@ const userReducer = (state = initialState, action) => {
   }
 };
 
-export default userReducer;
+export default profileReducer;

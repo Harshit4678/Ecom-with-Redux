@@ -23,11 +23,29 @@ const Profile = () => {
     dispatch(
       fetchUserProfile((response) => {
         if (!response.error) {
-          setDetails(response.data);
+          if (response.data) {
+            setDetails({
+              email: authState.email || "",
+              name: response.data.name || "",
+              phone: response.data.phone || "",
+              address: response.data.address || "",
+            });
+          }
         }
       })
     );
-  }, [dispatch]);
+  }, [dispatch, authState.email]);
+
+  useEffect(() => {
+    if (profile) {
+      setDetails({
+        email: authState.email || "",
+        name: profile.name || "",
+        phone: profile.phone || "",
+        address: profile.address || "",
+      });
+    }
+  }, [profile, authState.email]);
 
   const handleChange = (e) => {
     setDetails({
@@ -49,6 +67,54 @@ const Profile = () => {
       })
     );
   };
+
+  if (profile === null) {
+    return (
+      <div className="profile-container">
+        <form onSubmit={handleSubmit} className="profile-form">
+          <h1 className="profile-title">User Profile</h1>
+          <div className="form-group">
+            <label>Name: </label>
+            <input
+              type="text"
+              name="name"
+              placeholder="Name"
+              value={details.name}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <div className="form-group">
+            <label>Email: </label>
+            <input type="email" name="email" value={details.email} readOnly />
+          </div>
+          <div className="form-group">
+            <label>Phone: </label>
+            <input
+              type="text"
+              name="phone"
+              placeholder="Phone Number"
+              value={details.phone}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <div className="form-group">
+            <label>Address: </label>
+            <input
+              type="text"
+              name="address"
+              placeholder="Address"
+              value={details.address}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <button type="submit">Save</button>
+        </form>
+      </div>
+    );
+  }
 
   return (
     <div>

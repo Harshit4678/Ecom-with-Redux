@@ -1,23 +1,29 @@
 import axios from "axios";
 
 export const fetchOrderHistory = (callback) => {
-  return async (dispatch) => {
+  return async (dispatch, getState) => {
+    const { auth } = getState();
+    if (!auth.idToken) {
+      return callback({
+        error: true,
+        data: {
+          error: "Please Login to view order history",
+        },
+      });
+    }
+
     try {
       const response = await axios.get(
-        `https://ecom-1ef8b-default-rtdb.firebaseio.com/orders.json`
+        `https://ecom-1ef8b-default-rtdb.firebaseio.com/orders/${auth.localId}.json?auth=${auth.idToken}`
       );
       const data = response.data;
-      console.log("Fetched order data:", data);
 
       // Flatten the nested structure
-      const transformedData = Object.keys(data).flatMap((orderId) =>
-        Object.keys(data[orderId]).map((subOrderId) => ({
-          id: subOrderId,
-          ...data[orderId][subOrderId],
-        }))
-      );
+      const transformedData = Object.keys(data).map((orderId) => ({
+        id: orderId,
+        ...data[orderId],
+      }));
 
-      console.log("Transformed order data:", transformedData);
       dispatch({
         type: "FETCH_ORDER_HISTORY",
         payload: transformedData,

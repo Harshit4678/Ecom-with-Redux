@@ -12,10 +12,6 @@ const OrderHistory = () => {
     dispatch(fetchOrderHistory(() => setLoading(false)));
   }, [dispatch]);
 
-  useEffect(() => {
-    console.log("Order history from Redux state:", orderHistory);
-  }, [orderHistory]);
-
   if (loading) {
     return <div className="loading">Loading...</div>;
   }

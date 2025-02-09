@@ -68,7 +68,6 @@ const mainReducer = (
 const orderReducer = (state = { history: [] }, action) => {
   switch (action.type) {
     case "FETCH_ORDER_HISTORY":
-      console.log("Updating order history in state:", action.payload); // Add this line
       return {
         ...state,
         history: action.payload,
